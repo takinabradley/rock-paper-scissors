@@ -13,8 +13,11 @@
 			computerSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
 			return computerSelection;
 		}
+		/*Creates computerSelection, and assigns a random selection of "rock", 
+			"paper", or "scissors"*/
 		
-		function playRound(computerSelection) {
+		function playRound() {
+			let computerSelection = computerPlay();
       let playerWin;
 			let playerSelection = prompt("Rock, paper, or scissors?", '');
       playerSelection = playerSelection.toLowerCase();
@@ -40,10 +43,15 @@
           return playerWin;
       }
 		}
-		
-		function game(playerWin) {
+		/*finds computerSelection, creates a variable for playerSelection and 
+			prompts the player for the value. Decides whether the player wins or 
+			loses, and assigns 1 (win) or 0 (lose) to playerWin.*/
+			
+		function game() {
       let playerWinCount = 0;
       let computerWinCount = 0;
+			
+			let playerWin = playRound();
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
@@ -54,7 +62,7 @@
         console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
       }
       
-      playerWin = playRound(computerPlay());
+      playerWin = playRound();
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
@@ -65,7 +73,7 @@
         console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
       }
 
-      playerWin = playRound(computerPlay());
+      playerWin = playRound();
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
@@ -76,7 +84,7 @@
         console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
       }
 
-      playerWin = playRound(computerPlay());
+      playerWin = playRound();
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
@@ -87,7 +95,7 @@
         console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
       }
 
-      playerWin = playRound(computerPlay());
+      playerWin = playRound();
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
@@ -106,9 +114,11 @@
         return console.log("Computer Wins!");
       }
 		}
-    
-    game(playRound(computerPlay()));
-		
+		/*Creates playerWinCount and computerWinCount. Plays a five-round game that 
+			keeps score and adds every playerWin = 1 to playerWinCount and 
+			playerWin = 0 to computerWinCount from playRound() on each round. Then
+			reports a winner or loser at the end of the game.*/
+		game();
 	</script>
 </body>
 
