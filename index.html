@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <title>Function scope example</title>
+</head>
+
+<body>
+	<script>
+		function computerPlay() {
+			let computerSelection = ["rock", "paper", "scissors"];
+			computerSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
+			return computerSelection;
+		}
+		
+		function playRound(computerSelection) {
+      let playerWin;
+			let playerSelection = prompt("Rock, paper, or scissors?", '');
+      playerSelection = playerSelection.toLowerCase();
+      
+      if (playerSelection === computerSelection) {
+        console.log(`Computer picked: ${computerSelection}`);
+        return playerWin;
+      } else if (playerSelection === "rock" && computerSelection === "scissors") {
+          console.log(`Computer picked: ${computerSelection}`);
+          playerWin = 1;
+          return playerWin;
+      } else if (playerSelection === "paper" && computerSelection === "rock") {
+          console.log(`Computer picked: ${computerSelection}`);
+          playerWin = 1;
+          return playerWin;
+      } else if (playerSelection === "scissors" && computerSelection === "paper") {
+          console.log(`Computer picked: ${computerSelection}`);
+          playerWin = 1;
+          return playerWin;
+      } else {
+          console.log(`Computer picked: ${computerSelection}`);
+          playerWin = 0;
+          return playerWin;
+      }
+		}
+		
+		function game(playerWin) {
+      let playerWinCount = 0;
+      let computerWinCount = 0;
+      if (playerWin === 1) {
+        playerWinCount++;
+        console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else if (playerWin === 0) {
+        computerWinCount++;
+        console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else {
+        console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      }
+      
+      playerWin = playRound(computerPlay());
+      if (playerWin === 1) {
+        playerWinCount++;
+        console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else if (playerWin === 0) {
+        computerWinCount++;
+        console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else {
+        console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      }
+
+      playerWin = playRound(computerPlay());
+      if (playerWin === 1) {
+        playerWinCount++;
+        console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else if (playerWin === 0) {
+        computerWinCount++;
+        console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else {
+        console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      }
+
+      playerWin = playRound(computerPlay());
+      if (playerWin === 1) {
+        playerWinCount++;
+        console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else if (playerWin === 0) {
+        computerWinCount++;
+        console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else {
+        console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      }
+
+      playerWin = playRound(computerPlay());
+      if (playerWin === 1) {
+        playerWinCount++;
+        console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else if (playerWin === 0) {
+        computerWinCount++;
+        console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      } else {
+        console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      }
+      
+      if (playerWinCount === computerWinCount) {
+        return console.log("The Game Ends In A Draw!");
+      } else if (playerWinCount > computerWinCount) {
+        return console.log("Player Wins!");
+      } else {
+        return console.log("Computer Wins!");
+      }
+		}
+    
+    game(playRound(computerPlay()));
+		
+	</script>
+</body>
+
+</html>
