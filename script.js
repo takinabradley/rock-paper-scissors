@@ -98,6 +98,7 @@ let playerWinCount = 0;
 let computerWinCount = 0;
 let playerWin;
 let roundCounter = 0;
+
 const output = document.querySelector('.output');
 
 let scoreCard = document.createElement('p');
@@ -109,6 +110,7 @@ output.appendChild(roundResults);
 let gameResults = document.createElement('p');
 output.appendChild(gameResults);
 
+function playerPlay () {
 const buttons = document.querySelectorAll('button');
 buttons.forEach( (button) => {
   button.addEventListener('click', (e) => {
@@ -122,3 +124,6 @@ buttons.forEach( (button) => {
     //console.log(roundCounter);
   });
 });
+}
+
+playerPlay();
