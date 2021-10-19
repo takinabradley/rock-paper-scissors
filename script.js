@@ -10,38 +10,40 @@ function playRound(e) {
   let playerWin;
   
 	let computerSelection = computerPlay();
+  roundResults.textContent = `Computer Picked: ${computerSelection}`;
+  console.log(`Computer picked: ${computerSelection}`);
   
   let playerSelection = e.target.classList.toString();
-
+  
   if (playerSelection === computerSelection) {
-    console.log(`You picked: ${playerSelection}`);
-    console.log(`Computer picked: ${computerSelection}`);
-    playerWin = 0;
-    console.log(playerWin);
+    //console.log(`You picked: ${playerSelection}`);
+    //console.log(`Computer picked: ${computerSelection}`);
+    playerWin;
+    //console.log(playerWin);
     return playerWin;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
-      console.log(`You picked: ${playerSelection}`);
-      console.log(`Computer picked: ${computerSelection}`);
+      //console.log(`You picked: ${playerSelection}`);
+      //console.log(`Computer picked: ${computerSelection}`);
       playerWin = 1;
-      console.log(playerWin);
+      //console.log(playerWin);
       return playerWin;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
-      console.log(`You picked: ${playerSelection}`);
-      console.log(`Computer picked: ${computerSelection}`);
+      //console.log(`You picked: ${playerSelection}`);
+      //console.log(`Computer picked: ${computerSelection}`);
       playerWin = 1;
-      console.log(playerWin);
+      //console.log(playerWin);
       return playerWin;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
-      console.log(`You picked: ${playerSelection}`);
-      console.log(`Computer picked: ${computerSelection}`);
+      //console.log(`You picked: ${playerSelection}`);
+      //console.log(`Computer picked: ${computerSelection}`);
       playerWin = 1;
-      console.log(playerWin);
+      //console.log(playerWin);
       return playerWin;
   } else {
-      console.log(`You picked: ${playerSelection}`);
-      console.log(`Computer picked: ${computerSelection}`);
+      //console.log(`You picked: ${playerSelection}`);
+      //console.log(`Computer picked: ${computerSelection}`);
       playerWin = 0;
-      console.log(playerWin);
+      //console.log(playerWin);
       return playerWin;
   }
 }
@@ -54,11 +56,14 @@ function game(playerWin) {
     if (playerWin === 1) {
       playerWinCount++;
       console.log(`Player Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      scoreCard.textContent = `Score: ${playerWinCount} : ${computerWinCount}`;
     } else if (playerWin === 0) {
       computerWinCount++;
       console.log(`Computer Wins! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      scoreCard.textContent = `Score: ${playerWinCount} : ${computerWinCount}`;
     } else {
       console.log(`Draw! Player: ${playerWinCount} Computer: ${computerWinCount}`);
+      scoreCard.textContent = `Score: ${playerWinCount} : ${computerWinCount}`;
     }
     
     if (roundCounter === 5) {
@@ -66,16 +71,19 @@ function game(playerWin) {
         roundCounter = 0;
         playerWinCount = 0;
         computerWinCount = 0;
+        gameResults.textContent = "The Game Ends In A Draw!";
         return console.log("The Game Ends In A Draw!");
       } else if (playerWinCount > computerWinCount) {
         roundCounter = 0;
         playerWinCount = 0;
         computerWinCount = 0;
+        gameResults.textContent = "Player Wins!";
         return console.log("Player Wins!");
       } else {
         roundCounter = 0;
         playerWinCount = 0;
         computerWinCount = 0;
+        gameResults.textContent = "Computer Wins!";
         return console.log("Computer Wins!");
       }
     }
@@ -90,15 +98,27 @@ let playerWinCount = 0;
 let computerWinCount = 0;
 let playerWin;
 let roundCounter = 0;
+const output = document.querySelector('.output');
 
+let scoreCard = document.createElement('p');
+output.appendChild(scoreCard);
+
+let roundResults = document.createElement('p');
+output.appendChild(roundResults);
+
+let gameResults = document.createElement('p');
+output.appendChild(gameResults);
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach( (button) => {
   button.addEventListener('click', (e) => {
     roundCounter += 1;
+    if (gameResults.textContent !== '') gameResults.textContent = '';
     playerWin = game(playRound(e));
     
-    console.log(roundCounter);
+    
+    //scoreCard.textContent = `Score: ${playerWinCount} : ${computerWinCount}`;
+
+    //console.log(roundCounter);
   });
 });
-console.log(playerWin);
