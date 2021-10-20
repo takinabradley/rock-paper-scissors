@@ -30,21 +30,26 @@ function playRound(e) {
   
   if (playerSelection === computerSelection) {
     console.log(`Draw! Computer picked: ${computerSelection}`);
+    document.querySelector('.roundOutput').textContent = `Draw! Computer picked: ${computerSelection}`;
     return playerWin;
   } else if (playerSelection === "rock" && computerSelection === "scissors") {
       console.log(`Player Wins! Computer picked: ${computerSelection}`);
+      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
       playerWin = 1;
       return playerWin;
   } else if (playerSelection === "paper" && computerSelection === "rock") {
       console.log(`Player Wins! Computer picked: ${computerSelection}`);
+      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
       playerWin = 1;
       return playerWin;
   } else if (playerSelection === "scissors" && computerSelection === "paper") {
       console.log(`Player Wins! Computer picked: ${computerSelection}`);
+      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
       playerWin = 1;
       return playerWin;
   } else {
       console.log(`Computer Wins! Computer picked: ${computerSelection}`);
+      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
       playerWin = 0;
       return playerWin;
   }
@@ -56,25 +61,30 @@ function playRound(e) {
 
 function game () {
   createOutputElements();
-  let round = 0; // REMEMBER THIS: This entire function isn't rerun on every click, and that's pretty useful.
+  let round = 0; 
   let playerWinCount = 0;
   let computerWinCount = 0;
+  // REMEMBER THIS: This entire function isn't rerun on every click, and that's pretty useful.
   
   const buttons = document.querySelectorAll('button');
   buttons.forEach( (button) => {
     button.addEventListener('click', (e) => {
       round++;
+      if (document.querySelector('.winnerOutput').textContent !== '') document.querySelector('.winnerOutput').textContent = '';
       
       let playerWin = playRound(e);
       
       if (playerWin === 1) {
         playerWinCount++;
         console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
+        document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
       } else if (playerWin === 0) {
         computerWinCount++;
         console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
+        document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
       } else {
         console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
+        document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
       }
       
       while (round % 5 === 0) {
@@ -82,21 +92,22 @@ function game () {
           round = 0;
           playerWinCount = 0;
           computerWinCount = 0;
+          document.querySelector('.winnerOutput').textContent = `The Game Ends In A Draw!`;
           return console.log("The Game Ends In A Draw!");
         } else if (playerWinCount > computerWinCount) {
           round = 0;
           playerWinCount = 0;
           computerWinCount = 0;
+          document.querySelector('.winnerOutput').textContent = `Player Wins!`;
           return console.log("Player Wins!");
         } else {
           round = 0;
           playerWinCount = 0;
           computerWinCount = 0;
+          document.querySelector('.winnerOutput').textContent = `Computer Wins!`;
           return console.log("Computer Wins!");
         }
       }
-      
-      console.log(round);
       //can probably reset round to 0 here, it seems like a nicer way to do it.
       //Next step is creating and pushing DOM outputs to the browser.
     });
