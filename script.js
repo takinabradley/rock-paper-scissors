@@ -13,14 +13,14 @@ function createOutputElements () {
   winnerOutput.classList.add('winnerOutput');
   output.appendChild(winnerOutput);
 }
+//Creates DOM elements to push game results to later
 
 function computerPlay() {
   let computerSelection = ["rock", "paper", "scissors"];
   computerSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
   return computerSelection;
 }
-/*Creates computerSelection, and assigns a random selection of "rock", 
-  "paper", or "scissors"*/
+/*Randomly Selects between rock-paper-scissors and returns the selection for playRound()*/
 
 
 function playRound(e) {
@@ -54,9 +54,8 @@ function playRound(e) {
       return playerWin;
   }
 }
-/*finds computerSelection, creates a variable for playerSelection and 
-  prompts the player for the value. Decides whether the player wins or 
-  loses, and assigns 1 (win) or 0 (lose) to playerWin.*/
+/*Decides whether the player wins or loses, and assigns 1 (win) or 0 (lose) to playerWin. 
+If it's undefined the game() functin will consider it a draw.*/
   
 
 function game () {
@@ -108,17 +107,11 @@ function game () {
           return console.log("Computer Wins!");
         }
       }
-      //can probably reset round to 0 here, it seems like a nicer way to do it.
-      //Next step is creating and pushing DOM outputs to the browser.
     });
   });
 }
-/*Passes the class of the button pressed to playRound() on every click. so it can determine the playerSelection.
-  It then saves the value of playerWin from playRound so the game() function can use it.*/
-
-/*Creates playerWinCount and computerWinCount. Plays a five-round game that 
-  keeps score and adds every playerWin = 1 to playerWinCount and 
-  playerWin = 0 to computerWinCount from playRound() on each round. Then
-  reports a winner or loser at the end of the game.*/
+/*Passes the class of the button pressed to playRound() on every click.
+  Determines who won, or if it was a draw, and assigns points accordingly 
+  for a 5-round game.*/
   
 game();
