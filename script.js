@@ -1,7 +1,3 @@
-function game() {
-
-  let round = 0;
-  
   function computerPlay() {
     let computerSelection = ["rock", "paper", "scissors"];
     computerSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
@@ -11,11 +7,13 @@ function game() {
     "paper", or "scissors"*/
     
   function playerPlay () {
+    let round = 0;
     const buttons = document.querySelectorAll('button');
     buttons.forEach( (button) => {
       button.addEventListener('click', (e) => {
         let playerWin = playRound(e);
-        score(playerWin);
+        game(playerWin, round++);
+        //can probably reset round to 0 here, it seems like a nicer way to do it.
       });
     });
   }
@@ -58,11 +56,9 @@ function game() {
     loses, and assigns 1 (win) or 0 (lose) to playerWin.*/
     
 
-  function score(playerWin) {
+  function game(playerWin, round) {
     let playerWinCount = 0;
     let computerWinCount = 0;
-    
-    round++;
     
     if (playerWin === 1) {
       playerWinCount++;
@@ -74,7 +70,7 @@ function game() {
       console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
     }
     
-    while (round === 5) {
+    while (round !== 0 && (round % 5 === 0)) {
       if (playerWinCount === computerWinCount) {
         round = 0;
         return console.log("The Game Ends In A Draw!");
@@ -95,7 +91,3 @@ function game() {
     reports a winner or loser at the end of the game.*/
 
   playerPlay();
-
-}
-
-game();
