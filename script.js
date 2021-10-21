@@ -26,24 +26,21 @@ function computerPlay() {
 function playRound(e) {
   const computerSelection = computerPlay();
   const playerSelection = e.target.classList.toString();
-  let playerWin;
   
   if (playerSelection === computerSelection) {
     console.log(`Draw! Computer picked: ${computerSelection}`);
     document.querySelector('.roundOutput').textContent = `Draw! Computer picked: ${computerSelection}`;
-    return playerWin;
+    return "draw";
   } else if (playerSelection === "rock" && computerSelection === "scissors" ||
              playerSelection === "paper" && computerSelection === "rock" ||
              playerSelection === "scissors" && computerSelection === "paper") {
       console.log(`Player Wins! Computer picked: ${computerSelection}`);
       document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
-      playerWin = 1;
-      return playerWin;
+      return "player";
   } else {
       console.log(`Computer Wins! Computer picked: ${computerSelection}`);
       document.querySelector('.roundOutput').textContent = `Computer Wins! Computer picked: ${computerSelection}`;
-      playerWin = 0;
-      return playerWin;
+      return "computer";
   }
 }
 /*Decides whether the player wins or loses, and assigns 1 (win) or 0 (lose) to playerWin. 
@@ -63,13 +60,13 @@ function game () {
       round++;
       if (document.querySelector('.winnerOutput').textContent !== '') document.querySelector('.winnerOutput').textContent = '';
       
-      let playerWin = playRound(e);
+      let roundWinner = playRound(e);
       
-      if (playerWin === 1) {
+      if (roundWinner === "player") {
         playerWinCount++;
         console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
         document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
-      } else if (playerWin === 0) {
+      } else if (roundWinner === "computer") {
         computerWinCount++;
         console.log(`Player: ${playerWinCount} Computer: ${computerWinCount}`);
         document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
