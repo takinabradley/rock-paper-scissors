@@ -32,17 +32,9 @@ function playRound(e) {
     console.log(`Draw! Computer picked: ${computerSelection}`);
     document.querySelector('.roundOutput').textContent = `Draw! Computer picked: ${computerSelection}`;
     return playerWin;
-  } else if (playerSelection === "rock" && computerSelection === "scissors") {
-      console.log(`Player Wins! Computer picked: ${computerSelection}`);
-      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
-      playerWin = 1;
-      return playerWin;
-  } else if (playerSelection === "paper" && computerSelection === "rock") {
-      console.log(`Player Wins! Computer picked: ${computerSelection}`);
-      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
-      playerWin = 1;
-      return playerWin;
-  } else if (playerSelection === "scissors" && computerSelection === "paper") {
+  } else if (playerSelection === "rock" && computerSelection === "scissors" ||
+             playerSelection === "paper" && computerSelection === "rock" ||
+             playerSelection === "scissors" && computerSelection === "paper") {
       console.log(`Player Wins! Computer picked: ${computerSelection}`);
       document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
       playerWin = 1;
