@@ -49,7 +49,7 @@ function playRound(e) {
       return playerWin;
   } else {
       console.log(`Computer Wins! Computer picked: ${computerSelection}`);
-      document.querySelector('.roundOutput').textContent = `Player Wins! Computer picked: ${computerSelection}`;
+      document.querySelector('.roundOutput').textContent = `Computer Wins! Computer picked: ${computerSelection}`;
       playerWin = 0;
       return playerWin;
   }
