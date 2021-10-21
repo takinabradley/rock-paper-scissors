@@ -43,7 +43,7 @@ function playRound(e) {
       return "computer";
   }
 }
-/*Finds player and computer selections, then plays a single round.
+/*Finds player and computer selections, then plays a single round and displays the winner.
   Returns the winner of the round, or "draw" for use by the game() function.*/
   
 function game () {
@@ -57,7 +57,10 @@ function game () {
   buttons.forEach( (button) => {
     button.addEventListener('click', (e) => {
       round++;
-      if (document.querySelector('.winnerOutput').textContent !== '') document.querySelector('.winnerOutput').textContent = '';
+      
+      if (document.querySelector('.winnerOutput').textContent !== '') {
+        document.querySelector('.winnerOutput').textContent = '';
+      }
       
       let roundWinner = playRound(e);
       
@@ -75,10 +78,6 @@ function game () {
       }
       
       if (round === 5) {
-        round = 0;
-        playerWinCount = 0;
-        computerWinCount = 0;
-        
         if (playerWinCount === computerWinCount) {
           document.querySelector('.winnerOutput').textContent = `The Game Ends In A Draw!`;
           return console.log("The Game Ends In A Draw!");
@@ -89,6 +88,10 @@ function game () {
           document.querySelector('.winnerOutput').textContent = `Computer Wins!`;
           return console.log("Computer Wins!");
         }
+        
+        round = 0;
+        playerWinCount = 0;
+        computerWinCount = 0;
       }
       
     });
