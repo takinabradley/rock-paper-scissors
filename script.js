@@ -75,27 +75,23 @@ function game () {
         document.querySelector('.gameOutput').textContent = `Player: ${playerWinCount} Computer: ${computerWinCount}`;
       }
       
-      while (round % 5 === 0) {
+      if (round === 5) {
+        round = 0;
+        playerWinCount = 0;
+        computerWinCount = 0;
+        
         if (playerWinCount === computerWinCount) {
-          round = 0;
-          playerWinCount = 0;
-          computerWinCount = 0;
           document.querySelector('.winnerOutput').textContent = `The Game Ends In A Draw!`;
           return console.log("The Game Ends In A Draw!");
         } else if (playerWinCount > computerWinCount) {
-          round = 0;
-          playerWinCount = 0;
-          computerWinCount = 0;
           document.querySelector('.winnerOutput').textContent = `Player Wins!`;
           return console.log("Player Wins!");
         } else {
-          round = 0;
-          playerWinCount = 0;
-          computerWinCount = 0;
           document.querySelector('.winnerOutput').textContent = `Computer Wins!`;
           return console.log("Computer Wins!");
         }
       }
+      
     });
   });
 }
