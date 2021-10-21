@@ -43,10 +43,9 @@ function playRound(e) {
       return "computer";
   }
 }
-/*Finds player and user selections, then plays a single round.
+/*Finds player and computer selections, then plays a single round.
   Returns the winner of the round, or "draw" for use by the game() function.*/
   
-
 function game () {
   createOutputElements();
   let round = 0; 
