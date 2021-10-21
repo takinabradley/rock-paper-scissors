@@ -80,13 +80,13 @@ function game () {
       if (round === 5) {
         if (playerWinCount === computerWinCount) {
           document.querySelector('.winnerOutput').textContent = `The Game Ends In A Draw!`;
-          return console.log("The Game Ends In A Draw!");
+          console.log("The Game Ends In A Draw!");
         } else if (playerWinCount > computerWinCount) {
           document.querySelector('.winnerOutput').textContent = `Player Wins!`;
-          return console.log("Player Wins!");
+          console.log("Player Wins!");
         } else {
           document.querySelector('.winnerOutput').textContent = `Computer Wins!`;
-          return console.log("Computer Wins!");
+          console.log("Computer Wins!");
         }
         
         round = 0;
