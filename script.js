@@ -13,14 +13,14 @@ function createOutputElements () {
   winnerOutput.classList.add('winnerOutput');
   output.appendChild(winnerOutput);
 }
-//Creates DOM elements to push game results to later
+//Creates DOM elements to push game results to user later.
 
 function computerPlay() {
   let computerSelection = ["rock", "paper", "scissors"];
   computerSelection = computerSelection[Math.floor(Math.random()*computerSelection.length)];
   return computerSelection;
 }
-/*Randomly Selects between rock-paper-scissors and returns the selection for playRound()*/
+//Randomly Selects between rock-paper-scissors and returns the selection for playRound()
 
 
 function playRound(e) {
@@ -43,8 +43,8 @@ function playRound(e) {
       return "computer";
   }
 }
-/*Decides whether the player wins or loses, and assigns 1 (win) or 0 (lose) to playerWin. 
-If it's undefined the game() functin will consider it a draw.*/
+/*Finds player and user selections, then plays a single round.
+  Returns the winner of the round, or "draw" for use by the game() function.*/
   
 
 function game () {
@@ -95,8 +95,7 @@ function game () {
     });
   });
 }
-/*Passes the class of the button pressed to playRound() on every click.
-  Determines who won, or if it was a draw, and assigns points accordingly 
-  for a 5-round game.*/
+/*Passes the class of the button presses to playRound() on every click. Keeps
+  track of the current round, and determines who wins a five-round game.*/
   
 game();
